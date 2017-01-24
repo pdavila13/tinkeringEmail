@@ -1,6 +1,7 @@
 <?php
 
 use App\Mail\WelcomeEmail;
+use App\Notifications\WelcomeNotification;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,15 @@ Route::get('/', function () {
 Route::get('/sendmail', function () {
     Mail::to('pdavila@iesebre.com')->send(new WelcomeEmail());
     dump('Email enviat correctament.');
+});
+
+Route::get('/sendnotification', function () {
+    //$user = factory(App\User::class)->create();
+
+    Auth::loginUsingId(1);
+
+    $user = Auth::user();
+    $user->notify(new WelcomeNotification());
+
+    dump('Notification send.');
 });
