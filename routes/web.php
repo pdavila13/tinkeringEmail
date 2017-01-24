@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\WelcomeEmail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +25,6 @@ Route::get('/', function () {
 //});
 
 Route::get('/sendmail', function () {
-    Mail::to('pdavila@iesebre.com')->send(new WelcolmeEmail());
+    Mail::to('pdavila@iesebre.com')->send(new WelcomeEmail());
     dump('Email enviat correctament.');
 });
